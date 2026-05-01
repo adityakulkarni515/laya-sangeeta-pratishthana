@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: #C9A84C;
+    --maroon: #800020;
+    --brown-dark: #3D1A08;
+    --ivory: #F5F0E8;
+    --cream: #FAF6EE;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream text-brown-dark font-sans;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-brown-deeper;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-400;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(201, 168, 76, 0.3);
+    color: #3D1A08;
+  }
+}
+
+@layer components {
+  /* Gold shimmer text effect */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #C9A84C 0%,
+      #F0D080 25%,
+      #E8C97A 50%,
+      #F0D080 75%,
+      #C9A84C 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Sanskrit ornamental border */
+  .ornament-border {
+    border-image: linear-gradient(90deg, transparent, #C9A84C, transparent) 1;
+  }
+
+  /* Tabla ripple pattern */
+  .tabla-pattern {
+    background-image:
+      radial-gradient(circle at center, rgba(201,168,76,0.08) 0%, transparent 70%),
+      repeating-radial-gradient(circle at center, transparent 0px, transparent 20px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px);
+  }
+
+  /* Sound wave lines */
+  .sound-wave {
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(201, 168, 76, 0.15) 8px,
+      rgba(201, 168, 76, 0.15) 9px
+    );
+  }
+
+  /* Page section */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gold text */
+  .text-gold {
+    color: #C9A84C;
+  }
+
+  /* Premium card */
+  .card-premium {
+    @apply bg-white rounded-lg overflow-hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.25);
+  }
+
+  /* Gold button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-7 py-3 font-sans font-semibold text-sm tracking-widest uppercase;
+    background: linear-gradient(135deg, #C9A84C 0%, #E8C97A 50%, #C9A84C 100%);
+    background-size: 200% auto;
+    color: #3D1A08;
+    border: none;
+    border-radius: 2px;
+    letter-spacing: 0.12em;
+    transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-gold:hover {
+    background-position: right center;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-7 py-3 font-sans font-semibold text-sm tracking-widest uppercase;
+    background: transparent;
+    color: #F5F0E8;
+    border: 1px solid rgba(201, 168, 76, 0.7);
+    border-radius: 2px;
+    letter-spacing: 0.12em;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: rgba(201, 168, 76, 0.1);
+    border-color: #C9A84C;
+    color: #C9A84C;
+  }
+
+  /* Gold divider line */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+  }
+
+  /* Decorative dot */
+  .ornament-dot::before,
+  .ornament-dot::after {
+    content: '◆';
+    color: #C9A84C;
+    font-size: 0.6em;
+    margin: 0 0.5em;
+    opacity: 0.7;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+  }
+}
+
+/* Loading screen animation */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; pointer-events: none; }
+}
+
+.loading-exit {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+/* Image overlay utility */
+.img-overlay {
+  position: relative;
+}
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(61,26,8,0.9) 0%, rgba(61,26,8,0.3) 50%, transparent 100%);
+}
