@@ -256,35 +256,6 @@ export default function AboutGuru() {
         </div>
       </section>
 
-      {/* ───────── PHOTO GALLERY ───────── */}
-      <section className="section-padding bg-ivory">
-        <div className="container-custom">
-          <FadeIn>
-            <SectionHeader
-              eyebrow="In Memory"
-              title="Glimpses of Guruji"
-              subtitle="Photographs that capture the grace and devotion of a true musical master"
-            />
-          </FadeIn>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
-            {gurujiPhotos.map((p, i) => (
-              <FadeIn key={p.src} delay={i * 0.1}>
-                <div className="relative overflow-hidden rounded-sm group aspect-square shadow-elegant">
-                  <img
-                    src={p.src}
-                    alt={p.caption}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brown-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
-                    <p className="font-serif text-ivory text-sm">{p.caption}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
     </PageTransition>
   )
 }
