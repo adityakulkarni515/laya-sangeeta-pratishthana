@@ -2,10 +2,12 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
-import { Mail, MapPin, Facebook, Instagram, Youtube, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Facebook, Instagram, Youtube, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xykokjob'
 
 function FadeIn({ children, delay = 0, className = '' }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -59,6 +61,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', type: 'general', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(null)
 
   function handleChange(e) {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -67,10 +70,31 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault()
     setSubmitting(true)
-    // Simulate submission (replace with EmailJS or backend)
-    await new Promise(r => setTimeout(r, 1500))
-    setSubmitting(false)
-    setSubmitted(true)
+    setError(null)
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name:         form.name,
+          email:        form.email,
+          subject:      form.subject || `${form.type} enquiry`,
+          enquiry_type: form.type,
+          message:      form.message,
+        }),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      } else {
+        const data = await res.json()
+        setError(data?.errors?.[0]?.message || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection and try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -124,7 +148,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
             {/* Sidebar */}
             <div className="lg:col-span-2">
-              <FadeIn direction="right">
+              <FadeIn>
                 <SectionHeader
                   eyebrow="Get in Touch"
                   title="We'd Love to Hear from You"
@@ -177,23 +201,6 @@ export default function Contact() {
                   ))}
                 </div>
               </FadeIn>
-
-              {/* Sponsor CTA */}
-              <FadeIn delay={0.35} className="mt-8">
-                <div className="bg-maroon/8 border border-maroon/20 rounded-sm p-5">
-                  <p className="font-sans text-xs tracking-widest uppercase text-gold mb-2">Sponsor Enquiry</p>
-                  <h4 className="font-serif text-brown-dark text-lg font-semibold mb-2">Partner with a Legacy</h4>
-                  <p className="font-sans text-brown-light text-xs leading-relaxed mb-4">
-                    Support cultural preservation and become part of an enduring musical tradition. Your sponsorship reaches thousands of music enthusiasts.
-                  </p>
-                  <a
-                    href="mailto:layasangeetapratishtana@gmail.com?subject=Sponsorship%20Enquiry%20-%20Laya%20Sangeeta%20Pratishthana"
-                    className="btn-gold text-xs w-full justify-center"
-                  >
-                    Sponsor Enquiry
-                  </a>
-                </div>
-              </FadeIn>
             </div>
 
             {/* Contact Form */}
@@ -224,10 +231,10 @@ export default function Contact() {
                         <p className="font-sans text-xs tracking-widest uppercase text-brown-light/80 mb-2">Enquiry Type</p>
                         <div className="flex flex-wrap gap-2">
                           {[
-                            { value: 'general', label: 'General' },
-                            { value: 'sponsor', label: 'Sponsorship' },
-                            { value: 'event', label: 'Event' },
-                            { value: 'media', label: 'Media' },
+                            { value: 'general',     label: 'General' },
+                            { value: 'sponsorship', label: 'Sponsorship' },
+                            { value: 'event',       label: 'Event' },
+                            { value: 'media',       label: 'Media' },
                           ].map(opt => (
                             <button
                               key={opt.value}
@@ -245,6 +252,13 @@ export default function Contact() {
                         </div>
                       </div>
 
+                      {error && (
+                        <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-sm p-4 mb-5">
+                          <AlertCircle size={16} className="text-red-500 shrink-0 mt-0.5" />
+                          <p className="font-sans text-red-600 text-sm">{error}</p>
+                        </div>
+                      )}
+
                       <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <FormField label="Full Name" id="name" required value={form.name} onChange={handleChange} placeholder="Your name" />
@@ -256,9 +270,9 @@ export default function Contact() {
                         <motion.button
                           type="submit"
                           disabled={submitting}
-                          className="btn-gold w-full justify-center gap-2 inline-flex items-center"
-                          whileHover={{ scale: 1.01 }}
-                          whileTap={{ scale: 0.99 }}
+                          className="btn-gold w-full justify-center gap-2 inline-flex items-center disabled:opacity-70 disabled:cursor-not-allowed"
+                          whileHover={{ scale: submitting ? 1 : 1.01 }}
+                          whileTap={{ scale: submitting ? 1 : 0.99 }}
                         >
                           {submitting ? (
                             <>
@@ -283,29 +297,6 @@ export default function Contact() {
               </FadeIn>
             </div>
           </div>
-
-          {/* Google Map */}
-          <FadeIn delay={0.2} className="mt-14">
-            <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold mb-5">Upcoming Venue</p>
-            <div className="rounded-sm overflow-hidden border border-gold/15 shadow-elegant">
-              <iframe
-                title="Kala Academy, Goa — Event Venue"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3845.2!2d73.833!3d15.497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc0e1b4a1f2cd%3A0x6f12b5c76ef3f5a!2sKala%20Academy%20Goa!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            <div className="mt-3 flex items-center gap-2">
-              <MapPin size={14} className="text-gold shrink-0" />
-              <p className="font-sans text-brown-light text-sm">
-                Kala Academy Goa, Dayanand Bandodkar Marg, Opp. Kala Academy, Campal, Panaji, Goa 403001, India
-              </p>
-            </div>
-          </FadeIn>
         </div>
       </section>
     </PageTransition>

@@ -24,14 +24,6 @@ function FadeIn({ children, delay = 0, className = '', direction = 'up' }) {
   )
 }
 
-const timelineEvents = [
-  { year: '1950s', title: 'Early Years', desc: 'Born with a natural affinity for rhythm, Pt. H. Somashekhar began his musical journey in Karnataka, drawn to the sublime language of the Tabla.' },
-  { year: '1960s', title: 'Discipleship & Training', desc: 'He pursued rigorous training under master teachers, immersing himself in the Gharana tradition — absorbing not just technique, but the spiritual dimension of rhythm.' },
-  { year: '1970s', title: 'Mastery & Teaching', desc: 'Having attained mastery, he began teaching with extraordinary devotion, passing on the sacred knowledge of bols, layas, and talas to countless students across Karnataka.' },
-  { year: '1980s–90s', title: 'Building a Legacy', desc: 'His reputation spread far and wide. Students from diverse backgrounds sought his guidance. His teaching philosophy bridged ancient tradition with accessible, heartfelt instruction.' },
-  { year: '2000s', title: 'Cultural Ambassador', desc: 'As a celebrated cultural figure in Karnataka, Guruji performed and taught with an unwavering commitment to preserving the authentic Hindustani Tabla tradition.' },
-  { year: 'Eternal', title: 'Enduring Influence', desc: 'His students carry forward his legacy across India — teaching, performing, and celebrating the rhythm of the cosmos that Guruji embodied throughout his extraordinary life.' },
-]
 
 const gurujiPhotos = [
   { src: '/images/Somashekharsirphoto1.jpg', caption: 'Pandit H. Somashekhar' },
@@ -51,7 +43,7 @@ export default function AboutGuru() {
       {/* ───────── HERO BANNER ───────── */}
       <section className="relative h-[55vh] min-h-[380px] flex items-end overflow-hidden">
         <img
-          src="/images/SomashekharSirPhoto2.jpg"
+          src="/images/PHOTO-2022-07-05-08-31-52-4.jpg"
           alt="Pandit H. Somashekhar"
           className="absolute inset-0 w-full h-full object-cover object-top"
         />
@@ -193,52 +185,73 @@ export default function AboutGuru() {
         </div>
       </section>
 
-      {/* ───────── TIMELINE ───────── */}
+      {/* ───────── GURUJI PHOTO GALLERY ───────── */}
       <section className="section-padding bg-brown-dark relative overflow-hidden">
         <div className="absolute inset-0 tabla-pattern opacity-30 pointer-events-none" />
         <div className="container-custom relative">
           <FadeIn>
             <SectionHeader
-              eyebrow="Journey Through Time"
-              title="The Legacy Timeline"
-              subtitle="A life of music, devotion, and boundless generosity of spirit"
+              eyebrow="Moments in Time"
+              title="Guruji Through the Years"
+              subtitle="A collection of cherished photographs capturing the grace, devotion and artistry of Pandit H. Somashekhar"
               light
             />
           </FadeIn>
 
-          <div className="mt-14 relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gold/20 hidden md:block" />
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Large featured photo */}
+            <FadeIn delay={0} className="sm:col-span-2 lg:col-span-2">
+              <div className="relative overflow-hidden rounded-sm group" style={{ height: '420px' }}>
+                <img
+                  src="/images/Somashekharsirphoto1.jpg"
+                  alt="Pandit H. Somashekhar"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown-deeper/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="font-serif text-ivory text-lg">Pandit H. Somashekhar</p>
+                  <p className="font-sans text-gold/70 text-xs tracking-wide mt-1">Tabla Maestro · Karnataka</p>
+                </div>
+                <div className="absolute top-4 left-4 w-10 h-10 border-t-2 border-l-2 border-gold/50" />
+                <div className="absolute bottom-16 right-4 w-10 h-10 border-b-2 border-r-2 border-gold/50" />
+              </div>
+            </FadeIn>
 
-            <div className="space-y-8">
-              {timelineEvents.map((event, i) => {
-                const isLeft = i % 2 === 0
-                return (
-                  <FadeIn key={event.year} delay={i * 0.1}>
-                    <div className={`flex flex-col md:flex-row gap-6 md:gap-0 items-start md:items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                      {/* Content */}
-                      <div className={`flex-1 ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                        <div className={`bg-brown-deeper/60 border border-gold/15 p-6 rounded-sm hover:border-gold/30 transition-colors duration-300 ${isLeft ? 'md:ml-auto md:mr-0' : ''}`}
-                          style={{ maxWidth: '420px' }}
-                        >
-                          <p className="font-sans text-gold text-xs tracking-widest uppercase mb-2">{event.year}</p>
-                          <h3 className="font-serif text-ivory text-xl mb-3">{event.title}</h3>
-                          <p className="font-sans text-ivory/60 text-sm leading-relaxed">{event.desc}</p>
-                        </div>
-                      </div>
+            {/* Side photo */}
+            <FadeIn delay={0.1}>
+              <div className="relative overflow-hidden rounded-sm group" style={{ height: '420px' }}>
+                <img
+                  src="/images/SomaShekaharSirPhoto.png.avif"
+                  alt="Guruji — a cherished portrait"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brown-deeper/70 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="font-serif text-ivory text-sm">A Cherished Portrait</p>
+                </div>
+              </div>
+            </FadeIn>
 
-                      {/* Center dot */}
-                      <div className="hidden md:flex w-8 h-8 rounded-full bg-brown-dark border-2 border-gold/60 items-center justify-center shrink-0 z-10">
-                        <div className="w-2 h-2 rounded-full bg-gold" />
-                      </div>
-
-                      {/* Spacer */}
-                      <div className="flex-1" />
-                    </div>
-                  </FadeIn>
-                )
-              })}
-            </div>
+            {/* Three smaller photos */}
+            {[
+              { src: '/images/SomashekharSirPhoto2.jpg', caption: 'The Maestro at his craft' },
+              { src: '/images/SomashekharsirPhoto3.jpg', caption: 'A moment of reflection' },
+              { src: '/images/SomaShekharSirphoto5.jpeg.avif', caption: 'Guruji in performance' },
+            ].map((p, i) => (
+              <FadeIn key={p.src} delay={0.15 + i * 0.1}>
+                <div className="relative overflow-hidden rounded-sm group" style={{ height: '260px' }}>
+                  <img
+                    src={p.src}
+                    alt={p.caption}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brown-deeper/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
+                    <p className="font-serif text-ivory text-sm">{p.caption}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>

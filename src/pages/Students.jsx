@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
-import { Quote } from 'lucide-react'
+import { Quote, ExternalLink } from 'lucide-react'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
@@ -39,10 +39,11 @@ const students = [
     quoteTitle: 'Tabla Love',
     quote: 'The first moment when it felt that I love Tabla, the energy infused by Guruji. The profound teaching, sweet personality of Guruji makes this possible till today.',
     badge: 'Artist & Educator',
+    externalLink: 'https://udaykulkarniweb.wixsite.com/uday-kulkarni',
   },
   {
     name: 'Vidyabhushan A Panchamukhi',
-    img: '/images/SirStudentVidyabhushan.png.avif',
+    img: '/images/VidyabhushanNewphoto.jpg',
     role: 'President',
     org: 'Laya Sangeeta Pratishthana',
     quoteTitle: 'The Dhir Dhir Story',
@@ -69,7 +70,7 @@ const students = [
   },
   {
     name: 'Shrihari Diggavi',
-    img: null,
+    img: '/images/SirStudentShrihariDiggaviPhoto.jpeg',
     role: 'Classical Artist & Teacher',
     org: 'Continuing the musical teaching tradition',
     quoteTitle: 'Living the Legacy',
@@ -119,7 +120,20 @@ function StudentCard({ student, index }) {
         {/* Content */}
         <div className="p-5 flex-1 flex flex-col">
           <div className="mb-3">
-            <h3 className="font-serif text-brown-dark text-lg font-semibold leading-tight">{student.name}</h3>
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="font-serif text-brown-dark text-lg font-semibold leading-tight">{student.name}</h3>
+              {student.externalLink && (
+                <a
+                  href={student.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Visit website"
+                  className="text-gold/50 hover:text-gold transition-colors duration-200 shrink-0 mt-1"
+                >
+                  <ExternalLink size={14} />
+                </a>
+              )}
+            </div>
             <p className="font-sans text-maroon text-xs font-semibold tracking-wide mt-1">{student.role}</p>
             <p className="font-sans text-brown-light/80 text-xs mt-0.5 leading-snug">{student.org}</p>
           </div>
@@ -153,9 +167,10 @@ export default function Students() {
       {/* ───────── HERO ───────── */}
       <section className="relative h-[50vh] min-h-[340px] flex items-end overflow-hidden">
         <img
-          src="/images/SirStudentUdayKulkarni.jpg"
+          src="/images/PHOTO-2022-07-03-23-40-43.jpg"
           alt="Students of Guruji"
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: '50% 30%' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-brown-deeper/40 via-brown-deeper/55 to-brown-deeper" />
         <div className="relative z-10 container-custom pb-14">
@@ -218,6 +233,51 @@ export default function Students() {
               <StudentCard key={student.name} student={student} index={i} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ───────── ORGANISATION FORMATION DAY ───────── */}
+      <section className="section-padding bg-brown-dark relative overflow-hidden">
+        <div className="absolute inset-0 tabla-pattern opacity-20 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px gold-line" />
+        <div className="container-custom relative">
+          <FadeIn>
+            <SectionHeader
+              eyebrow="A Historic Moment"
+              title="The Day It All Began"
+              subtitle="The founding members of Laya Sangeeta Pratishthana — students of Guruji — on the day the organisation was formed in his honour"
+              light
+            />
+          </FadeIn>
+
+          <FadeIn delay={0.15} className="mt-10">
+            <div className="relative rounded-sm overflow-hidden shadow-gold-lg group max-w-4xl mx-auto">
+              <img
+                src="/images/OrganisationFormationDay.jpg"
+                alt="Laya Sangeeta Pratishthana — Organisation Formation Day with Guruji and Students"
+                className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={{ maxHeight: '560px', objectPosition: 'top' }}
+              />
+              {/* Gold frame accents */}
+              <div className="absolute top-4 left-4 w-14 h-14 border-t-2 border-l-2 border-gold/50" />
+              <div className="absolute top-4 right-4 w-14 h-14 border-t-2 border-r-2 border-gold/50" />
+              <div className="absolute bottom-16 left-4 w-14 h-14 border-b-2 border-l-2 border-gold/50" />
+              <div className="absolute bottom-16 right-4 w-14 h-14 border-b-2 border-r-2 border-gold/50" />
+              {/* Caption */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brown-deeper/90 to-transparent py-5 px-6">
+                <p className="font-serif text-ivory text-base md:text-lg">Guruji with his devoted students</p>
+                <p className="font-sans text-gold/80 text-xs tracking-widest uppercase mt-1">
+                  Laya Sangeeta Pratishthana — Organisation Formation Day
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.25} className="mt-8 text-center max-w-2xl mx-auto">
+            <p className="font-serif italic text-ivory/70 text-lg leading-relaxed">
+              Bound together by devotion to Guruji and a shared love for the sacred art of Tabla, these students came together to ensure that his legacy would live on — not just in memory, but in music, in teaching, and in cultural celebration for generations to come.
+            </p>
+          </FadeIn>
         </div>
       </section>
 

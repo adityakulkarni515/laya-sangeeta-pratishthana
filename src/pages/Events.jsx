@@ -119,10 +119,17 @@ function GalleryGrid({ images, title }) {
 }
 
 const dharwad2022Images = [
-  { src: '/images/Somashekharsirphoto1.jpg', caption: 'Annual Program — Dharwad 2022' },
-  { src: '/images/SomaShekaharSirPhoto.png.avif', caption: 'Guruji at the 2022 Concert' },
-  { src: '/images/SomashekharsirPhoto3.jpg', caption: 'Musical evening — Dharwad 2022' },
-  { src: '/images/SomaShekharSirphoto5.jpeg.avif', caption: 'Tabla recital — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52.jpg',    caption: 'Annual Program — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-2.jpg',  caption: 'Cultural evening — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-3.jpg',  caption: 'Artists at Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-4.jpg',  caption: 'Musical gathering — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-5.jpg',  caption: 'Tabla recital — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-6.jpg',  caption: 'Performance — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-7.jpg',  caption: 'Concert highlights — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-8.jpg',  caption: 'Ensemble — Dharwad 2022' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-9.jpg',  caption: 'Dharwad 2022 — memories' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-10.jpg', caption: 'Dharwad 2022 — celebration' },
+  { src: '/images/PHOTO-2022-07-05-08-31-52-11.jpg', caption: 'Dharwad 2022 — final moments' },
 ]
 
 const dharwad2023Images = [

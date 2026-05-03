@@ -288,62 +288,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── SPONSORS CALLOUT ───────── */}
-      <section className="section-padding bg-ivory relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30 pointer-events-none"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,168,76,0.06) 40px, rgba(201,168,76,0.06) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,168,76,0.06) 40px, rgba(201,168,76,0.06) 41px)',
-          }}
-        />
-        <div className="container-custom relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeIn>
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="h-px w-12 bg-gold/50" />
-                <span className="font-sans text-xs tracking-[0.3em] uppercase text-gold">Sponsorships & Patronage</span>
-                <div className="h-px w-12 bg-gold/50" />
-              </div>
-              <h2 className="font-serif text-brown-dark font-semibold mb-4"
-                style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}
-              >
-                Partner with a Legacy
-              </h2>
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/60" />
-                <span className="text-gold text-xs">◆</span>
-                <div className="h-px w-24 bg-gold/50" />
-                <span className="text-gold text-xs">◆</span>
-                <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/60" />
-              </div>
-              <p className="font-serif text-brown-light text-lg leading-relaxed mb-3">
-                Support cultural preservation and become part of an enduring musical tradition.
-              </p>
-              <p className="font-sans text-brown-light/80 text-sm leading-relaxed mb-10 max-w-xl mx-auto">
-                Your sponsorship helps us bring world-class Hindustani classical performances to wider audiences, nurture young talent, and preserve the sacred rhythms of our heritage. Join us in honoring a legacy that transcends generations.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                {[
-                  { tier: 'Patron', desc: 'Name recognition & cultural ambassador status', icon: '✦' },
-                  { tier: 'Sponsor', desc: 'Event branding and acknowledgment in all materials', icon: '◆' },
-                  { tier: 'Donor', desc: 'Support our educational and preservation initiatives', icon: '◈' },
-                ].map(({ tier, desc, icon }) => (
-                  <div key={tier} className="border border-gold/25 bg-white/60 p-6 rounded-sm text-center hover:border-gold/60 hover:shadow-gold transition-all duration-300">
-                    <span className="text-gold text-2xl mb-3 block">{icon}</span>
-                    <h3 className="font-serif text-brown-dark text-lg font-semibold mb-2">{tier}</h3>
-                    <p className="font-sans text-brown-light text-xs leading-relaxed">{desc}</p>
-                  </div>
-                ))}
-              </div>
-              <Link to="/contact" className="btn-gold inline-flex items-center gap-2">
-                Contact Us <ArrowRight size={15} />
-              </Link>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
 
       {/* ───────── STUDENTS PREVIEW ───────── */}
       <section className="section-padding bg-brown-dark/95 relative overflow-hidden">
@@ -361,7 +305,7 @@ export default function Home() {
           <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { img: '/images/SirStudentUdayKulkarni.jpg', name: 'Dr Uday Kulkarni', role: 'Tabla Artist & Professor' },
-              { img: '/images/SirStudentVidyabhushan.png.avif', name: 'Vidyabhushan Panchamukhi', role: 'President, LSP' },
+              { img: '/images/VidyabhushanNewphoto.jpg', name: 'Vidyabhushan Panchamukhi', role: 'President, LSP' },
               { img: '/images/SirStudentShashidhar.jpg', name: 'Shashidhar Kulkarni', role: 'Secretary, LSP' },
               { img: '/images/SirStudentDundayyaPujar.jpg', name: 'Dr Dundayyaswami', role: 'Asst. Prof & HoD' },
               { img: '/images/SirStudentJayateerth.jpeg', name: 'Jayateerth Panchamukhi', role: 'Classical Artist' },
