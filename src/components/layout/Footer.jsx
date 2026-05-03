@@ -40,17 +40,30 @@ export default function Footer() {
             {/* Social icons */}
             <div className="flex gap-4 mt-6">
               {[
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Youtube, label: 'YouTube' },
-              ].map(({ icon: Icon, label }) => (
-                <button
-                  key={label}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center text-ivory/50 hover:text-gold hover:border-gold transition-all duration-300"
-                >
-                  <Icon size={15} />
-                </button>
+                { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SomashekharSirFanClub' },
+                { icon: Instagram, label: 'Instagram', href: null },
+                { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@LayaSangeetaPratishtana' },
+              ].map(({ icon: Icon, label, href }) => (
+                href ? (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center text-ivory/50 hover:text-gold hover:border-gold transition-all duration-300"
+                  >
+                    <Icon size={15} />
+                  </a>
+                ) : (
+                  <button
+                    key={label}
+                    aria-label={label}
+                    className="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center text-ivory/50 hover:text-gold hover:border-gold transition-all duration-300"
+                  >
+                    <Icon size={15} />
+                  </button>
+                )
               ))}
             </div>
           </div>

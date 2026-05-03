@@ -187,17 +187,30 @@ export default function Contact() {
                 <p className="font-sans text-xs tracking-widest uppercase text-gold mb-4">Follow Us</p>
                 <div className="flex gap-3">
                   {[
-                    { icon: Facebook, label: 'Facebook' },
-                    { icon: Instagram, label: 'Instagram' },
-                    { icon: Youtube, label: 'YouTube' },
-                  ].map(({ icon: Icon, label }) => (
-                    <button
-                      key={label}
-                      aria-label={label}
-                      className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
-                    >
-                      <Icon size={16} />
-                    </button>
+                    { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SomashekharSirFanClub' },
+                    { icon: Instagram, label: 'Instagram', href: null },
+                    { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@LayaSangeetaPratishtana' },
+                  ].map(({ icon: Icon, label, href }) => (
+                    href ? (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
+                      >
+                        <Icon size={16} />
+                      </a>
+                    ) : (
+                      <button
+                        key={label}
+                        aria-label={label}
+                        className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
+                      >
+                        <Icon size={16} />
+                      </button>
+                    )
                   ))}
                 </div>
               </FadeIn>
