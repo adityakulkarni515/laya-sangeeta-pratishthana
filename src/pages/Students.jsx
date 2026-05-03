@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
 import { Quote, ExternalLink } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
@@ -44,6 +45,7 @@ const students = [
   {
     name: 'Vidyabhushan A Panchamukhi',
     img: '/images/VidyabhushanNewphoto.jpg',
+    imgPosition: 'center',
     role: 'President',
     org: 'Laya Sangeeta Pratishthana',
     quoteTitle: 'The Dhir Dhir Story',
@@ -85,6 +87,7 @@ const students = [
     quoteTitle: 'The Rhythmic Path',
     quote: "Every stroke on the Tabla carries the imprint of Guruji's teaching. He didn't just teach us bols — he taught us how to listen, how to feel, how to speak through rhythm.",
     badge: 'Classical Artist',
+    imgPosition: 'left',
   },
 ]
 
@@ -102,8 +105,8 @@ function StudentCard({ student, index }) {
             <img
               src={student.img}
               alt={student.name}
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
-              style={{ transform: 'scale(1.02)' }}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+              style={{ objectPosition: student.imgPosition === 'left' ? 'left center' : student.imgPosition === 'center' ? 'center center' : 'center top', transform: 'scale(1.02)' }}
               onLoad={e => e.target.style.transform = 'scale(1)'}
             />
           ) : (
@@ -290,9 +293,9 @@ export default function Students() {
             <p className="font-serif italic text-ivory/60 mb-8">
               The music of Guruji lives on in every student, every performance, every beat that resonates with truth and devotion. We welcome all who seek to learn, preserve, and celebrate this timeless heritage.
             </p>
-            <a href="mailto:layasangeetapratishtana@gmail.com" className="btn-gold">
+            <Link to="/contact" className="btn-gold">
               Connect with Us
-            </a>
+            </Link>
           </FadeIn>
         </div>
       </section>

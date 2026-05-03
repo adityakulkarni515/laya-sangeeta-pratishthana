@@ -305,18 +305,19 @@ export default function Home() {
           <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { img: '/images/SirStudentUdayKulkarni.jpg', name: 'Dr Uday Kulkarni', role: 'Tabla Artist & Professor' },
-              { img: '/images/VidyabhushanNewphoto.jpg', name: 'Vidyabhushan Panchamukhi', role: 'President, LSP' },
+              { img: '/images/VidyabhushanNewphoto.jpg', name: 'Vidyabhushan Panchamukhi', role: 'President, LSP', position: 'center' },
               { img: '/images/SirStudentShashidhar.jpg', name: 'Shashidhar Kulkarni', role: 'Secretary, LSP' },
               { img: '/images/SirStudentDundayyaPujar.jpg', name: 'Dr Dundayyaswami', role: 'Asst. Prof & HoD' },
               { img: '/images/SirStudentJayateerth.jpeg', name: 'Jayateerth Panchamukhi', role: 'Classical Artist' },
-            ].map(({ img, name, role }, i) => (
+            ].map(({ img, name, role, position }, i) => (
               <FadeIn key={name} delay={i * 0.1}>
                 <div className="group text-center">
                   <div className="relative overflow-hidden rounded-sm mb-3 aspect-square">
                     <img
                       src={img}
                       alt={name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      style={{ objectPosition: position === 'center' ? 'center center' : 'center top' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brown-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>

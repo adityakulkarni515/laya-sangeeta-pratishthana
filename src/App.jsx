@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Layout from './components/layout/Layout'
 import LoadingScreen from './components/ui/LoadingScreen'
+import ScrollToTop from './components/ui/ScrollToTop'
 import Home from './pages/Home'
 import AboutGuru from './pages/AboutGuru'
 import Events from './pages/Events'
@@ -39,6 +40,7 @@ export default function App() {
       </AnimatePresence>
       {!loading && (
         <Layout>
+          <ScrollToTop />
           <AnimatedRoutes />
         </Layout>
       )}
