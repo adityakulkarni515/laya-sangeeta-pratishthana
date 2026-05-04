@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
-import { Quote, ExternalLink } from 'lucide-react'
+import { Quote, ExternalLink, Facebook, Youtube, Instagram } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
@@ -41,6 +41,11 @@ const students = [
     quote: 'The first moment when it felt that I love Tabla, the energy infused by Guruji. The profound teaching, sweet personality of Guruji makes this possible till today.',
     badge: 'Artist & Educator',
     externalLink: 'https://udaykulkarniweb.wixsite.com/uday-kulkarni',
+    socials: {
+      facebook:  'https://www.facebook.com/uday.m.kulkarni',
+      youtube:   'https://youtube.com/c/UdayKulkarni',
+      instagram: 'https://www.instagram.com/udaykulkarni_uk?igsh=MTN6aTBtdDd6amowcg%3D%3D&utm_source=qr',
+    },
   },
   {
     name: 'Vidyabhushan A Panchamukhi',
@@ -154,6 +159,39 @@ function StudentCard({ student, index }) {
               </p>
             </div>
           </div>
+
+          {student.externalLink && (
+            <div className="mt-4 pt-4 border-t border-gold/15 flex flex-col gap-3">
+              {student.socials && (
+                <div className="flex items-center justify-center gap-3">
+                  {[
+                    { icon: Facebook,  href: student.socials.facebook,  label: 'Facebook' },
+                    { icon: Instagram, href: student.socials.instagram, label: 'Instagram' },
+                    { icon: Youtube,   href: student.socials.youtube,   label: 'YouTube' },
+                  ].filter(s => s.href).map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-8 h-8 rounded-full border border-gold/25 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-ivory"
+                    >
+                      <Icon size={14} />
+                    </a>
+                  ))}
+                </div>
+              )}
+              <a
+                href={student.externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 btn-gold text-xs w-full justify-center"
+              >
+                Know More <ExternalLink size={12} />
+              </a>
+            </div>
+          )}
         </div>
       </motion.div>
     </FadeIn>
