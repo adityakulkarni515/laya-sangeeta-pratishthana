@@ -124,17 +124,18 @@ function StudentCard({ student, index }) {
         <div className="p-5 flex-1 flex flex-col">
           <div className="mb-3">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="font-serif text-brown-dark text-lg font-semibold leading-tight">{student.name}</h3>
-              {student.externalLink && (
+              {student.externalLink ? (
                 <a
                   href={student.externalLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="Visit website"
-                  className="text-gold/50 hover:text-gold transition-colors duration-200 shrink-0 mt-1"
+                  className="font-serif text-brown-dark text-lg font-semibold leading-tight hover:text-maroon transition-colors duration-200 inline-flex items-center gap-1.5 group/name"
                 >
-                  <ExternalLink size={14} />
+                  {student.name}
+                  <ExternalLink size={13} className="text-gold/50 group-hover/name:text-maroon transition-colors duration-200 shrink-0" />
                 </a>
+              ) : (
+                <h3 className="font-serif text-brown-dark text-lg font-semibold leading-tight">{student.name}</h3>
               )}
             </div>
             <p className="font-sans text-maroon text-xs font-semibold tracking-wide mt-1">{student.role}</p>

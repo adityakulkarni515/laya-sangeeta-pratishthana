@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
+import { Mail, MapPin, Facebook, Youtube } from 'lucide-react'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -41,7 +41,6 @@ export default function Footer() {
             <div className="flex gap-4 mt-6">
               {[
                 { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SomashekharSirFanClub' },
-                { icon: Instagram, label: 'Instagram', href: null },
                 { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@LayaSangeetaPratishtana' },
               ].map(({ icon: Icon, label, href }) => (
                 href ? (

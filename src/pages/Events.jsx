@@ -192,10 +192,9 @@ export default function Events() {
             <FadeIn direction="right" className="lg:w-5/12">
               <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
                 <img
-                  src="/images/UpcomingEventposter.png.avif"
+                  src="/images/AnuvartanEventPoster.png"
                   alt="Annual Classical Concert 2026 — Official Poster"
-                  className="w-full object-cover"
-                  style={{ maxHeight: '500px' }}
+                  className="w-full object-contain"
                 />
                 {/* Upcoming badge */}
                 <div className="absolute top-4 left-4">

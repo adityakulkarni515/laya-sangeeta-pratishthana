@@ -229,9 +229,9 @@ export default function Home() {
               <FadeIn direction="right">
                 <div className="relative rounded-sm overflow-hidden shadow-gold-lg group">
                   <img
-                    src="/images/UpcomingEventposter.png.avif"
+                    src="/images/AnuvartanEventPoster.png"
                     alt="Annual Classical Concert 2026 Poster"
-                    className="w-full h-72 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-gold text-brown-dark text-xs font-sans font-bold tracking-widest uppercase px-3 py-1.5 rounded-sm">

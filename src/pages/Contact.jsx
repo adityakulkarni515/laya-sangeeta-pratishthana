@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
-import { Mail, MapPin, Facebook, Instagram, Youtube, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, MapPin, Facebook, Youtube, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
@@ -188,29 +188,18 @@ export default function Contact() {
                 <div className="flex gap-3">
                   {[
                     { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/SomashekharSirFanClub' },
-                    { icon: Instagram, label: 'Instagram', href: null },
                     { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@LayaSangeetaPratishtana' },
                   ].map(({ icon: Icon, label, href }) => (
-                    href ? (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={label}
-                        className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
-                      >
-                        <Icon size={16} />
-                      </a>
-                    ) : (
-                      <button
-                        key={label}
-                        aria-label={label}
-                        className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
-                      >
-                        <Icon size={16} />
-                      </button>
-                    )
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-brown-light hover:text-maroon hover:border-maroon/50 transition-all duration-300 bg-white"
+                    >
+                      <Icon size={16} />
+                    </a>
                   ))}
                 </div>
               </FadeIn>
