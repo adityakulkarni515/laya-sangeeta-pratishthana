@@ -189,12 +189,12 @@ export default function Events() {
         <div className="container-custom py-16 md:py-24 relative">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
             {/* Poster */}
-            <FadeIn direction="right" className="lg:w-5/12">
+            <FadeIn direction="right" className="lg:w-7/12">
               <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
                 <img
                   src="/images/AnuvartanEventPoster.png"
                   alt="Annual Classical Concert 2026 — Official Poster"
-                  className="w-full object-contain"
+                  className="w-full h-auto"
                 />
                 {/* Upcoming badge */}
                 <div className="absolute top-4 left-4">
@@ -215,7 +215,7 @@ export default function Events() {
             </FadeIn>
 
             {/* Details */}
-            <div className="lg:w-7/12">
+            <div className="lg:w-5/12">
               <FadeIn>
                 <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/80 mb-3">Featured — Annual Concert</p>
                 <h2 className="font-serif text-ivory font-semibold mb-2" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)' }}>

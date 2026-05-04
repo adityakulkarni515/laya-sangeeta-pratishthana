@@ -223,15 +223,15 @@ export default function Home() {
             />
           </FadeIn>
 
-          <div className="mt-12 max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="mt-12 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-5 gap-8 items-center">
               {/* Event Poster */}
-              <FadeIn direction="right">
+              <FadeIn direction="right" className="md:col-span-3">
                 <div className="relative rounded-sm overflow-hidden shadow-gold-lg group">
                   <img
                     src="/images/AnuvartanEventPoster.png"
                     alt="Annual Classical Concert 2026 Poster"
-                    className="w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-gold text-brown-dark text-xs font-sans font-bold tracking-widest uppercase px-3 py-1.5 rounded-sm">
@@ -242,7 +242,7 @@ export default function Home() {
               </FadeIn>
 
               {/* Details */}
-              <FadeIn delay={0.15}>
+              <FadeIn delay={0.15} className="md:col-span-2">
                 <div className="text-ivory">
                   <div className="grid grid-cols-2 gap-4 mb-8">
                     {[
