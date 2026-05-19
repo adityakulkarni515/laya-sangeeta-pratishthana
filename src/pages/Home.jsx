@@ -279,6 +279,17 @@ export default function Home() {
               </FadeIn>
             </div>
 
+            {/* Artists Banner */}
+            <FadeIn delay={0.2} className="mt-10">
+              <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
+                <img
+                  src="/images/ConcertArtistsBanner.jpg"
+                  alt="Performing Artists — Annual Classical Concert 2026"
+                  className="w-full h-auto"
+                />
+              </div>
+            </FadeIn>
+
             {/* Countdown */}
             <FadeIn delay={0.3} className="mt-12 text-center">
               <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold/70 mb-6">Time Until the Concert</p>

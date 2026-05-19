@@ -274,6 +274,17 @@ export default function Events() {
             </div>
           </div>
 
+          {/* Artists Banner */}
+          <FadeIn delay={0.2} className="mt-12">
+            <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
+              <img
+                src="/images/ConcertArtistsBanner.jpg"
+                alt="Performing Artists — Annual Classical Concert 2026"
+                className="w-full h-auto"
+              />
+            </div>
+          </FadeIn>
+
           {/* Countdown */}
           <FadeIn delay={0.3} className="mt-14 text-center">
             <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/60 mb-6">Counting Down to the Concert</p>
