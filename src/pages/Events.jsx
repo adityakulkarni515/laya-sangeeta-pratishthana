@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { MapPin, Clock, Calendar, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { MapPin, Clock, Calendar, X, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
@@ -140,6 +140,15 @@ const dharwad2023Images = [
 ]
 
 export default function Events() {
+  useEffect(() => {
+    if (window.location.hash === '#press') {
+      setTimeout(() => {
+        const el = document.getElementById('press')
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 500)
+    }
+  }, [])
+
   return (
     <PageTransition>
       <Helmet>
@@ -289,6 +298,158 @@ export default function Events() {
           <FadeIn delay={0.3} className="mt-14 text-center">
             <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/60 mb-6">Counting Down to the Concert</p>
             <CountdownTimer targetDate="2026-05-27T14:00:00+05:30" />
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ───────── PRESS COVERAGE ───────── */}
+      <section id="press" className="relative overflow-hidden bg-brown-deeper">
+        <div className="absolute inset-0 tabla-pattern opacity-10 pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-px gold-line" />
+        <div className="absolute bottom-0 left-0 right-0 h-px gold-line" />
+
+        <div className="container-custom py-20 md:py-28 relative">
+
+          {/* Header */}
+          <FadeIn>
+            <div className="text-center mb-14">
+              <div className="flex items-center justify-center gap-4 mb-5">
+                <div className="h-px w-16 bg-gold/40" />
+                <div className="flex items-center gap-2 border border-gold/30 px-4 py-1.5 rounded-sm">
+                  <Newspaper size={13} className="text-gold" />
+                  <span className="font-sans text-xs tracking-[0.3em] uppercase text-gold">In The Press</span>
+                </div>
+                <div className="h-px w-16 bg-gold/40" />
+              </div>
+              <h2 className="font-serif text-ivory font-semibold mb-4" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)' }}>
+                As Featured in Leading Newspapers
+              </h2>
+              <p className="font-serif italic text-ivory/55 max-w-2xl mx-auto leading-relaxed">
+                The Annual Classical Concert 2026 has been warmly received by the Goan press —
+                with leading Marathi dailies covering the event ahead of its grand staging at Kala Academy.
+              </p>
+
+              {/* Newspaper badge */}
+              <div className="flex items-center justify-center mt-8">
+                <div className="flex items-center gap-3 bg-maroon/20 border border-gold/20 px-5 py-2.5 rounded-sm">
+                  <Newspaper size={14} className="text-gold/70" />
+                  <div className="text-left">
+                    <p className="font-serif text-ivory text-sm font-semibold leading-none">Lokmat</p>
+                    <p className="font-sans text-gold/60 text-xs tracking-wide mt-0.5">22 May 2026</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Pull Quote */}
+          <FadeIn delay={0.1}>
+            <div className="max-w-3xl mx-auto mb-14 text-center relative">
+              <span className="absolute -top-6 left-1/2 -translate-x-1/2 font-serif text-gold/15 leading-none select-none" style={{ fontSize: '8rem' }}>"</span>
+              <p className="font-serif italic text-ivory/80 text-xl md:text-2xl leading-relaxed relative z-10">
+                A one-day Hindustani classical music festival dedicated to the memory of
+                Tabla Maestro <span className="text-gold not-italic font-semibold">Pandit H. Somashekhar</span> —
+                bringing together nationally acclaimed artists at Kala Academy, Panaji, Goa.
+              </p>
+              <div className="gold-line w-16 mx-auto mt-6" />
+            </div>
+          </FadeIn>
+
+          {/* Welcoming Message */}
+          <FadeIn delay={0.15}>
+            <div className="max-w-3xl mx-auto text-center mb-14 bg-maroon/20 border border-gold/20 rounded-sm px-8 py-10">
+              <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold/70 mb-4">A Warm Invitation</p>
+              <p className="font-serif text-ivory text-lg md:text-xl leading-relaxed mb-5">
+                We are deeply honoured and humbled that <span className="text-gold font-semibold">Lokmat</span> —
+                one of Goa's most widely read Marathi dailies — has graciously featured our
+                Annual Classical Concert 2026 in its pages.
+              </p>
+              <p className="font-serif italic text-ivory/65 leading-relaxed mb-6">
+                This recognition fills our hearts with joy and gratitude. It is a beautiful reminder
+                that the love for Hindustani classical music continues to thrive across Goa, and that
+                the legacy of our beloved Guruji, <span className="text-gold/90 not-italic">Pandit H. Somashekhar</span>,
+                resonates far and wide.
+              </p>
+              <div className="gold-line w-12 mx-auto mb-6" />
+              <p className="font-serif text-ivory/80 leading-relaxed">
+                We extend our warmest and most heartfelt invitation to every music lover, rasika,
+                student, and cultural patron — please join us on
+                <strong className="text-gold"> 27 May 2026</strong> at
+                <strong className="text-gold"> Kala Academy, Panaji, Goa</strong> for an
+                unforgettable evening of soulful rhythm and classical artistry.
+                <br /><br />
+                <span className="font-sans text-xs tracking-widest uppercase text-gold/60">
+                  Entry is Free for All — Your presence is our greatest blessing.
+                </span>
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Clippings side by side */}
+          <FadeIn delay={0.2}>
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+              {/* Clipping 1 */}
+              <motion.div
+                className="group relative"
+                whileHover={{ rotate: 0, scale: 1.01 }}
+                initial={{ rotate: -0.8 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="absolute inset-0 translate-x-3 translate-y-3 bg-gold/10 rounded-sm" />
+                <div className="relative bg-white rounded-sm overflow-hidden shadow-gold-lg">
+                  <div className="bg-maroon px-5 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Newspaper size={14} className="text-gold" />
+                      <span className="font-serif text-ivory font-semibold tracking-wide">Lokmat</span>
+                    </div>
+                    <span className="font-sans text-xs text-ivory/50 tracking-widest uppercase">Goa Edition</span>
+                  </div>
+                  <div className="overflow-hidden bg-[#fffdf7] flex items-center justify-center" style={{ height: '420px' }}>
+                    <img
+                      src="/images/PressClipping1.jpg"
+                      alt="Lokmat — Anuvartana Sangeet Mahotsav coverage"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="bg-[#fffdf7] px-5 py-3 border-t border-gold/15">
+                    <p className="font-serif text-brown-dark font-semibold text-sm">अनुवर्तन संगीत महोत्सव</p>
+                    <p className="font-sans text-xs text-brown-light/60 italic mt-0.5">Anuvartana Sangeet Mahotsav</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Clipping 2 */}
+              <motion.div
+                className="group relative"
+                whileHover={{ rotate: 0, scale: 1.01 }}
+                initial={{ rotate: 0.8 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="absolute inset-0 translate-x-3 translate-y-3 bg-gold/10 rounded-sm" />
+                <div className="relative bg-white rounded-sm overflow-hidden shadow-gold-lg">
+                  <div className="bg-maroon px-5 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Newspaper size={14} className="text-gold" />
+                      <span className="font-serif text-ivory font-semibold tracking-wide">Lokmat</span>
+                    </div>
+                    <span className="font-sans text-xs text-ivory/50 tracking-widest uppercase">22 May 2026</span>
+                  </div>
+                  <div className="overflow-hidden bg-[#fffdf7] flex items-center justify-center" style={{ height: '420px' }}>
+                    <img
+                      src="/images/PressClipping2.jpg"
+                      alt="Lokmat — Anuvartana concert coverage"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="bg-[#fffdf7] px-5 py-3 border-t border-gold/15">
+                    <p className="font-serif text-brown-dark font-semibold text-sm">पणजीत २७ रोजी 'अनुवर्तन' कार्यक्रम</p>
+                    <p className="font-sans text-xs text-brown-light/60 italic mt-0.5">'Anuvartana' Program on the 27th in Panaji</p>
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
           </FadeIn>
         </div>
       </section>

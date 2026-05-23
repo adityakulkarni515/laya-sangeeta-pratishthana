@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Music, Heart, Star, Users, Shield, ChevronDown } from 'lucide-react'
+import { ArrowRight, Music, Heart, Star, Users, Shield, ChevronDown, Newspaper } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
@@ -299,6 +299,32 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ───────── PRESS STRIP ───────── */}
+      <div className="bg-maroon/95 border-y border-gold/20">
+        <div className="container-custom py-5">
+          <Link
+            to="/events#press"
+            className="flex flex-col sm:flex-row items-center justify-between gap-4 group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-9 h-9 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center shrink-0">
+                <Newspaper size={15} className="text-gold" />
+              </div>
+              <div>
+                <p className="font-sans text-xs tracking-[0.25em] uppercase text-gold/70 mb-0.5">As Seen In The Press</p>
+                <p className="font-serif text-ivory text-base">
+                  The Annual Classical Concert 2026 has been featured in
+                  <span className="text-gold font-semibold"> Lokmat</span> — Goa's leading Marathi daily.
+                </p>
+              </div>
+            </div>
+            <span className="font-sans text-xs tracking-widest uppercase text-gold border border-gold/40 px-4 py-2 rounded-sm group-hover:bg-gold group-hover:text-brown-dark transition-all duration-300 shrink-0">
+              Read Coverage →
+            </span>
+          </Link>
+        </div>
+      </div>
 
       {/* ───────── STUDENTS PREVIEW ───────── */}
       <section className="section-padding bg-brown-dark/95 relative overflow-hidden">

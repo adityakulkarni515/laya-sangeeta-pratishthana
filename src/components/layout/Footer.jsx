@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Facebook, Youtube } from 'lucide-react'
+import { Mail, MapPin, Facebook, Youtube, Newspaper } from 'lucide-react'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -113,6 +113,13 @@ export default function Footer() {
                 <p className="font-sans text-xs text-gold/80 mt-1">27 May 2026 · Kala Academy, Goa</p>
                 <p className="font-sans text-xs text-ivory/50 mt-0.5">Free Entry</p>
               </div>
+              <Link
+                to="/events#press"
+                className="mt-3 flex items-center gap-2 text-ivory/50 hover:text-gold transition-colors duration-300 group"
+              >
+                <Newspaper size={13} className="shrink-0" />
+                <span className="font-sans text-xs tracking-wide">As featured in <span className="text-gold/80 group-hover:text-gold">Lokmat</span></span>
+              </Link>
             </div>
           </div>
         </div>
