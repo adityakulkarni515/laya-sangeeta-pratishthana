@@ -109,9 +109,12 @@ export default function Footer() {
             <div className="mt-6">
               <p className="font-sans text-xs text-ivory/40 uppercase tracking-widest mb-3">Upcoming Event</p>
               <div className="border border-gold/20 rounded p-3 bg-maroon/10">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                  <p className="font-sans text-xs text-gold/60 uppercase tracking-widest">Coming Soon</p>
+                </div>
                 <p className="font-serif text-ivory/90 text-sm">Annual Classical Concert 2026</p>
-                <p className="font-sans text-xs text-gold/80 mt-1">27 May 2026 · Kala Academy, Goa</p>
-                <p className="font-sans text-xs text-ivory/50 mt-0.5">Free Entry</p>
+                <p className="font-sans text-xs text-gold/80 mt-1">November 2026 · Details TBA</p>
               </div>
               <Link
                 to="/events#press"

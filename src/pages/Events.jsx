@@ -3,11 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
-import { MapPin, Clock, Calendar, X, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
-import CountdownTimer from '../components/ui/CountdownTimer'
 
 function FadeIn({ children, delay = 0, className = '' }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -118,6 +117,19 @@ function GalleryGrid({ images, title }) {
   )
 }
 
+const anuvartana2026Images = [
+  { src: '/images/Anuvartana2026_1.jpg',  caption: 'Anuvartana — Kala Academy, Goa 2026' },
+  { src: '/images/Anuvartana2026_2.jpg',  caption: 'Classical performance — Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_3.jpg',  caption: 'Artists at Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_4.jpg',  caption: 'Musical evening — Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_5.jpg',  caption: 'Cultural gathering — Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_6.jpg',  caption: 'Performance highlights — Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_7.jpg',  caption: 'Tabla recital — Anuvartana 2026' },
+  { src: '/images/Anuvartana2026_8.jpg',  caption: 'Anuvartana 2026 — Goa' },
+  { src: '/images/Anuvartana2026_9.jpg',  caption: 'Anuvartana 2026 — memories' },
+  { src: '/images/Anuvartana2026_10.jpg', caption: 'Anuvartana 2026 — celebration' },
+]
+
 const dharwad2022Images = [
   { src: '/images/PHOTO-2022-07-05-08-31-52.jpg',    caption: 'Annual Program — Dharwad 2022' },
   { src: '/images/PHOTO-2022-07-05-08-31-52-2.jpg',  caption: 'Cultural evening — Dharwad 2022' },
@@ -153,7 +165,7 @@ export default function Events() {
     <PageTransition>
       <Helmet>
         <title>Events | Laya Sangeeta Pratishthana</title>
-        <meta name="description" content="Annual Hindustani classical music concerts by Laya Sangeeta Pratishthana. Past events in Dharwad 2022 & 2023. Upcoming: Kala Academy Goa, 27 May 2026." />
+        <meta name="description" content="Annual Hindustani classical music concerts by Laya Sangeeta Pratishthana. Anuvartana 2026 at Kala Academy, Goa. Next event coming in November 2026." />
       </Helmet>
 
       {/* ───────── HERO ───────── */}
@@ -191,114 +203,67 @@ export default function Events() {
         </div>
       </section>
 
-      {/* ───────── UPCOMING EVENT (FEATURED) ───────── */}
-      <section className="bg-maroon-deeper/95 relative overflow-hidden">
-        <div className="absolute inset-0 tabla-pattern opacity-20 pointer-events-none" />
+      {/* ───────── UPCOMING EVENT — NOVEMBER 2026 ───────── */}
+      <section className="section-padding bg-brown-dark relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5 pointer-events-none tabla-pattern" />
         <div className="absolute top-0 left-0 right-0 h-px gold-line" />
-        <div className="container-custom py-16 md:py-24 relative">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-            {/* Poster */}
-            <FadeIn direction="right" className="lg:w-7/12">
-              <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
-                <img
-                  src="/images/AnuvartanEventPoster.png"
-                  alt="Annual Classical Concert 2026 — Official Poster"
-                  className="w-full h-auto"
-                />
-                {/* Upcoming badge */}
-                <div className="absolute top-4 left-4">
-                  <motion.div
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="bg-gold text-brown-dark px-4 py-2 font-sans font-bold text-xs tracking-widest uppercase shadow-gold"
-                  >
-                    Upcoming
-                  </motion.div>
+        <div className="absolute bottom-0 left-0 right-0 h-px gold-line" />
+
+        <div className="container-custom">
+          <FadeIn>
+            <SectionHeader
+              eyebrow="Mark Your Calendar"
+              title="Next Annual Concert — November 2026"
+              subtitle="Laya Sangeeta Pratishthana's next celebration of Hindustani classical music is on its way. Details coming soon."
+              light
+            />
+          </FadeIn>
+
+          <div className="mt-12 max-w-4xl mx-auto">
+            <FadeIn delay={0.1}>
+              <div className="relative rounded-sm border border-gold/30 bg-maroon/20 overflow-hidden">
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
+                <div className="px-8 py-12 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                    <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold">Upcoming Event</p>
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                  </div>
+                  <p className="font-serif text-ivory/60 text-sm tracking-widest uppercase mb-2">Annual Classical Concert</p>
+                  <h3 className="font-serif text-gold font-semibold mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+                    November 2026
+                  </h3>
+                  <div className="gold-line w-20 mx-auto mb-6" />
+                  <p className="font-serif italic text-ivory/65 max-w-lg mx-auto leading-relaxed mb-8">
+                    A new evening of soulful rhythm and classical artistry — dedicated to the memory of
+                    Tabla Maestro <span className="text-gold/90 not-italic">Pandit H. Somashekhar</span>.
+                    Venue and date will be announced soon.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link to="/contact" className="btn-gold text-sm">
+                      Stay Updated
+                    </Link>
+                    <a href="#past-events" className="btn-outline text-sm">
+                      See Past Events
+                    </a>
+                  </div>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <span className="bg-maroon text-ivory px-3 py-2 font-sans font-bold text-xs tracking-widest uppercase border border-ivory/20">
-                    Free Entry
-                  </span>
-                </div>
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
               </div>
             </FadeIn>
 
-            {/* Details */}
-            <div className="lg:w-5/12">
-              <FadeIn>
-                <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/80 mb-3">Featured — Annual Concert</p>
-                <h2 className="font-serif text-ivory font-semibold mb-2" style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)' }}>
-                  Annual Classical Concert 2026
-                </h2>
-                <div className="gold-line w-20 mb-6" />
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                  <div className="flex items-start gap-3 bg-brown-darker/40 border border-gold/15 p-4 rounded-sm">
-                    <Calendar className="text-gold shrink-0 mt-0.5" size={18} />
-                    <div>
-                      <p className="font-sans text-xs tracking-widest uppercase text-gold/60 mb-0.5">Date</p>
-                      <p className="font-serif text-ivory">27 May 2026</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 bg-brown-darker/40 border border-gold/15 p-4 rounded-sm">
-                    <Clock className="text-gold shrink-0 mt-0.5" size={18} />
-                    <div>
-                      <p className="font-sans text-xs tracking-widest uppercase text-gold/60 mb-0.5">Time</p>
-                      <p className="font-serif text-ivory">2:00 PM – 8:00 PM</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 bg-brown-darker/40 border border-gold/15 p-4 rounded-sm">
-                    <MapPin className="text-gold shrink-0 mt-0.5" size={18} />
-                    <div>
-                      <p className="font-sans text-xs tracking-widest uppercase text-gold/60 mb-0.5">Venue</p>
-                      <p className="font-serif text-ivory text-sm">Kala Academy, Panaji, Goa</p>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="font-serif italic text-ivory/70 leading-relaxed mb-2">
-                  Kala Academy Goa, Dayanand Bandodkar Marg, Opp. Kala Academy, Campal, Panaji, Goa 403001, India
-                </p>
-
-                <Divider className="my-5" />
-
-                <p className="font-serif text-ivory/80 text-lg leading-relaxed mb-6">
-                  We warmly welcome all music lovers, seekers, rasikas, and cultural patrons to this celebration of Hindustani classical music dedicated to the memory of Pandit H. Somashekhar.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href="https://maps.google.com/?q=Kala+Academy+Goa+Dayanand+Bandodkar+Marg+Panaji"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-gold inline-flex items-center gap-2 justify-center"
-                  >
-                    <MapPin size={14} /> View Map
-                  </a>
-                  <Link to="/contact" className="btn-outline inline-flex items-center gap-2 justify-center">
-                    Contact Organizers
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
+            {/* Artists Banner from 2026 */}
+            <FadeIn delay={0.2} className="mt-10">
+              <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold/40 text-center mb-4">From Anuvartana 2026 · Kala Academy, Goa</p>
+              <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
+                <img
+                  src="/images/ConcertArtistsBanner.jpg"
+                  alt="Performing Artists — Anuvartana 2026"
+                  className="w-full h-auto"
+                />
+              </div>
+            </FadeIn>
           </div>
-
-          {/* Artists Banner */}
-          <FadeIn delay={0.2} className="mt-12">
-            <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
-              <img
-                src="/images/ConcertArtistsBanner.jpg"
-                alt="Performing Artists — Annual Classical Concert 2026"
-                className="w-full h-auto"
-              />
-            </div>
-          </FadeIn>
-
-          {/* Countdown */}
-          <FadeIn delay={0.3} className="mt-14 text-center">
-            <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/60 mb-6">Counting Down to the Concert</p>
-            <CountdownTimer targetDate="2026-05-27T14:00:00+05:30" />
-          </FadeIn>
         </div>
       </section>
 
@@ -325,8 +290,8 @@ export default function Events() {
                 As Featured in Leading Newspapers
               </h2>
               <p className="font-serif italic text-ivory/55 max-w-2xl mx-auto leading-relaxed">
-                The Annual Classical Concert 2026 has been warmly received by the Goan press —
-                with leading Marathi dailies covering the event ahead of its grand staging at Kala Academy.
+                Anuvartana 2026 was warmly covered by leading Marathi dailies ahead of the event —
+                a testament to the growing love for Hindustani classical music across Goa.
               </p>
 
               {/* Newspaper badge */}
@@ -372,14 +337,13 @@ export default function Events() {
               </p>
               <div className="gold-line w-12 mx-auto mb-6" />
               <p className="font-serif text-ivory/80 leading-relaxed">
-                We extend our warmest and most heartfelt invitation to every music lover, rasika,
-                student, and cultural patron — please join us on
-                <strong className="text-gold"> 27 May 2026</strong> at
-                <strong className="text-gold"> Kala Academy, Panaji, Goa</strong> for an
-                unforgettable evening of soulful rhythm and classical artistry.
+                We are grateful to every rasika, music lover, and cultural patron who graced us
+                with their presence on <strong className="text-gold">27 May 2026</strong> at
+                <strong className="text-gold"> Kala Academy, Panaji, Goa</strong>.
+                Your warmth and love for classical music made the evening truly unforgettable.
                 <br /><br />
                 <span className="font-sans text-xs tracking-widest uppercase text-gold/60">
-                  Entry is Free for All — Your presence is our greatest blessing.
+                  Stay tuned — our next concert is coming in November 2026.
                 </span>
               </p>
             </div>
@@ -455,7 +419,7 @@ export default function Events() {
       </section>
 
       {/* ───────── PAST EVENTS ───────── */}
-      <section className="section-padding bg-cream">
+      <section id="past-events" className="section-padding bg-cream">
         <div className="container-custom">
           <FadeIn>
             <SectionHeader
@@ -464,6 +428,29 @@ export default function Events() {
               subtitle="Each year, our programs have brought together artists, students, and patrons in celebration of Indian classical music"
             />
           </FadeIn>
+
+          {/* Anuvartana 2026 — Goa */}
+          <div className="mt-14">
+            <FadeIn>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-maroon/10 border border-maroon/20 flex items-center justify-center shrink-0">
+                  <span className="font-serif text-maroon font-semibold text-sm">III</span>
+                </div>
+                <div>
+                  <p className="font-sans text-xs tracking-widest uppercase text-gold mb-0.5">3rd Annual Program</p>
+                  <h3 className="font-serif text-brown-dark text-2xl font-semibold">Anuvartana — Kala Academy, Goa 2026</h3>
+                </div>
+              </div>
+              <p className="font-sans text-brown-light text-sm mb-6 max-w-2xl">
+                The third annual program — Anuvartana, The Rhythm Dance Connect — was held at the prestigious Kala Academy, Panaji, Goa on 27 May 2026. An unforgettable evening of Hindustani classical music that brought together renowned artists and a wonderful gathering of rasikas and music lovers from across Goa.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <GalleryGrid images={anuvartana2026Images} title="Anuvartana 2026" />
+            </FadeIn>
+          </div>
+
+          <Divider variant="tabla" className="my-16" />
 
           {/* Dharwad 2023 */}
           <div className="mt-14">
@@ -515,10 +502,10 @@ export default function Events() {
       <section className="py-16 bg-brown-dark text-center">
         <div className="container-custom">
           <FadeIn>
-            <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/70 mb-4">Join the Next Chapter</p>
-            <h2 className="font-serif text-ivory text-3xl md:text-4xl font-semibold mb-4">Be Part of Our Journey</h2>
+            <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold/70 mb-4">Coming Soon · November 2026</p>
+            <h2 className="font-serif text-ivory text-3xl md:text-4xl font-semibold mb-4">Next Concert — November 2026</h2>
             <p className="font-serif italic text-ivory/60 mb-8 max-w-xl mx-auto">
-              Whether as an attendee, sponsor, or collaborator — your support helps preserve a musical legacy for generations to come.
+              We are already preparing for our next annual concert. Stay connected, spread the word, and be part of this growing celebration of Hindustani classical music.
             </p>
             <Link to="/contact" className="btn-gold">Get Involved</Link>
           </FadeIn>

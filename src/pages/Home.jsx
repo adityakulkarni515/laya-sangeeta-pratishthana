@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet-async'
 import PageTransition from '../components/ui/PageTransition'
 import SectionHeader from '../components/ui/SectionHeader'
 import Divider from '../components/ui/Divider'
-import CountdownTimer from '../components/ui/CountdownTimer'
 
 function FadeIn({ children, delay = 0, className = '', direction = 'up' }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
@@ -206,9 +205,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ───────── UPCOMING EVENT HIGHLIGHT ───────── */}
+      {/* ───────── UPCOMING EVENT ───────── */}
       <section className="section-padding bg-brown-dark relative overflow-hidden">
-        {/* Decorative bg */}
         <div className="absolute inset-0 opacity-5 pointer-events-none tabla-pattern" />
         <div className="absolute top-0 left-0 right-0 h-px gold-line" />
         <div className="absolute bottom-0 left-0 right-0 h-px gold-line" />
@@ -217,83 +215,58 @@ export default function Home() {
           <FadeIn>
             <SectionHeader
               eyebrow="Mark Your Calendar"
-              title="Annual Classical Concert 2026"
-              subtitle="A grand celebration of Hindustani classical music in the heart of Goa"
+              title="Next Annual Concert — November 2026"
+              subtitle="Laya Sangeeta Pratishthana's next celebration of Hindustani classical music is on its way. Details coming soon."
               light
             />
           </FadeIn>
 
-          <div className="mt-12 max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-5 gap-8 items-center">
-              {/* Event Poster */}
-              <FadeIn direction="right" className="md:col-span-3">
-                <div className="relative rounded-sm overflow-hidden shadow-gold-lg group">
-                  <img
-                    src="/images/AnuvartanEventPoster.png"
-                    alt="Annual Classical Concert 2026 Poster"
-                    className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-gold text-brown-dark text-xs font-sans font-bold tracking-widest uppercase px-3 py-1.5 rounded-sm">
-                      Free Entry
-                    </span>
+          <div className="mt-12 max-w-4xl mx-auto">
+            {/* November highlight box */}
+            <FadeIn delay={0.1}>
+              <div className="relative rounded-sm border border-gold/30 bg-maroon/20 overflow-hidden">
+                {/* Top gold accent line */}
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
+                <div className="px-8 py-12 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                    <p className="font-sans text-xs tracking-[0.35em] uppercase text-gold">Upcoming Event</p>
+                    <div className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                   </div>
-                </div>
-              </FadeIn>
-
-              {/* Details */}
-              <FadeIn delay={0.15} className="md:col-span-2">
-                <div className="text-ivory">
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    {[
-                      { label: 'Date', value: '27 May 2026' },
-                      { label: 'Time', value: '2:00 PM – 8:00 PM' },
-                      { label: 'Venue', value: 'Kala Academy, Goa' },
-                      { label: 'Entry', value: 'Free for All' },
-                    ].map(({ label, value }) => (
-                      <div key={label} className="border border-gold/20 p-4 rounded-sm bg-brown-deeper/40">
-                        <p className="font-sans text-xs tracking-widest uppercase text-gold/70 mb-1">{label}</p>
-                        <p className="font-serif text-ivory text-base">{value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="font-serif italic text-ivory/70 text-sm leading-relaxed mb-6">
-                    We welcome all music lovers, seekers, rasikas, and cultural patrons to join us for an evening of soulful rhythm and classical artistry.
+                  <p className="font-serif text-ivory/60 text-sm tracking-widest uppercase mb-2">Annual Classical Concert</p>
+                  <h3 className="font-serif text-gold font-semibold mb-3" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
+                    November 2026
+                  </h3>
+                  <div className="gold-line w-20 mx-auto mb-6" />
+                  <p className="font-serif italic text-ivory/65 max-w-lg mx-auto leading-relaxed mb-8">
+                    A new evening of soulful rhythm and classical artistry — dedicated to the memory of
+                    Tabla Maestro <span className="text-gold/90 not-italic">Pandit H. Somashekhar</span>.
+                    Venue and date will be announced soon.
                   </p>
-
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <a
-                      href="https://maps.google.com/?q=Kala+Academy+Goa+Panaji"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-gold text-sm"
-                    >
-                      View Map
-                    </a>
-                    <Link to="/contact" className="btn-outline text-sm">
-                      Contact Organizers
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link to="/contact" className="btn-gold text-sm">
+                      Stay Updated
+                    </Link>
+                    <Link to="/events" className="btn-outline text-sm">
+                      See Anuvartana 2026 Photos
                     </Link>
                   </div>
                 </div>
-              </FadeIn>
-            </div>
-
-            {/* Artists Banner */}
-            <FadeIn delay={0.2} className="mt-10">
-              <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
-                <img
-                  src="/images/ConcertArtistsBanner.jpg"
-                  alt="Performing Artists — Annual Classical Concert 2026"
-                  className="w-full h-auto"
-                />
+                {/* Bottom gold accent line */}
+                <div className="h-1 w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
               </div>
             </FadeIn>
 
-            {/* Countdown */}
-            <FadeIn delay={0.3} className="mt-12 text-center">
-              <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold/70 mb-6">Time Until the Concert</p>
-              <CountdownTimer targetDate="2026-05-27T14:00:00+05:30" />
+            {/* Artists Banner from 2026 */}
+            <FadeIn delay={0.2} className="mt-10">
+              <p className="font-sans text-xs tracking-[0.3em] uppercase text-gold/40 text-center mb-4">From Anuvartana 2026 · Kala Academy, Goa</p>
+              <div className="relative rounded-sm overflow-hidden shadow-gold-lg">
+                <img
+                  src="/images/ConcertArtistsBanner.jpg"
+                  alt="Performing Artists — Anuvartana 2026"
+                  className="w-full h-auto"
+                />
+              </div>
             </FadeIn>
           </div>
         </div>
